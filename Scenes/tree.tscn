@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://w4bbewfnds7w"]
+
+[ext_resource type="Texture2D" uid="uid://j3dg1pyxe07o" path="res://Tree1.png" id="1_bevrl"]
+[ext_resource type="Script" path="res://Scenes/tree.gd" id="1_tpmpx"]
+[ext_resource type="PackedScene" uid="uid://cv4x1h3i4lum" path="res://Scenes/fruit.tscn" id="3_4fnx8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j1vn6"]
+size = Vector2(85, 83)
+
+[node name="Tree" type="StaticBody2D"]
+script = ExtResource("1_tpmpx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1.5, -2.5)
+shape = SubResource("RectangleShape2D_j1vn6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1, -17)
+texture = ExtResource("1_bevrl")
+
+[node name="Fruit" parent="." instance=ExtResource("3_4fnx8")]
+visible = false
+position = Vector2(0, -17)

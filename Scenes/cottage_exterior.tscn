@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://b5rv55i04dx8"]
+
+[ext_resource type="Script" path="res://Scenes/cottage_exterior.gd" id="1_qnsfw"]
+[ext_resource type="Texture2D" uid="uid://jc3qooy0fjqt" path="res://Cottage.png" id="2_xc7g4"]
+
+[node name="CottageExterior" type="StaticBody2D"]
+script = ExtResource("1_qnsfw")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_xc7g4")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(206, 181, 187, 138, 185, 38, 184, -66, 71, -92, -17, -162, -105, -102, -204, -89, -204, 70, -200, 188, -123, 189, -98, 178, -85, 148, -79, 112, -66, 6, 69, 10, 77, 25, 65, 90, 51, 132, 41, 188, 133, 189)
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(-15, 70)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+modulate = Color(0.235214, 0.705567, 0.36052, 1)
+polygon = PackedVector2Array(-33, -49, 64, -49, 70, -42, 44, 81, -52, 80, -38, 19)
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_player_entered"]

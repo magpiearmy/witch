@@ -1,0 +1,149 @@
+[gd_scene load_steps=8 format=3 uid="uid://cro6u4yi6d4s8"]
+
+[ext_resource type="Script" path="res://Scenes/level.gd" id="1_rcetn"]
+[ext_resource type="PackedScene" uid="uid://cgqvubalfhrgq" path="res://Scenes/witch.tscn" id="2_40rmq"]
+[ext_resource type="PackedScene" uid="uid://w4bbewfnds7w" path="res://Scenes/tree.tscn" id="3_crjhi"]
+[ext_resource type="PackedScene" uid="uid://bfguuf2mt4dia" path="res://Scenes/bush.tscn" id="4_raq23"]
+[ext_resource type="PackedScene" uid="uid://b5rv55i04dx8" path="res://Scenes/cottage_exterior.tscn" id="5_f363s"]
+[ext_resource type="AudioStream" uid="uid://5stnyqtvfnrb" path="res://pop.mp3" id="6_tqj8t"]
+[ext_resource type="PackedScene" uid="uid://baldwbitjdnam" path="res://Scenes/inventory.tscn" id="7_jmm56"]
+
+[node name="Level" type="Node2D"]
+y_sort_enabled = true
+position = Vector2(853, 394)
+script = ExtResource("1_rcetn")
+
+[node name="Background" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="Background"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.198817, 0.406119, 0.191134, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Witch" parent="." instance=ExtResource("2_40rmq")]
+position = Vector2(-213, -34)
+
+[node name="Camera2D" type="Camera2D" parent="Witch"]
+
+[node name="Trees" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Tree8" parent="Trees" instance=ExtResource("3_crjhi")]
+position = Vector2(193, -163)
+
+[node name="Tree5" parent="Trees" instance=ExtResource("3_crjhi")]
+position = Vector2(70, -163)
+
+[node name="Tree" parent="Trees" instance=ExtResource("3_crjhi")]
+position = Vector2(-52, -164)
+
+[node name="Tree6" parent="Trees" instance=ExtResource("3_crjhi")]
+position = Vector2(56, 80)
+
+[node name="Bush3" parent="Trees" instance=ExtResource("4_raq23")]
+position = Vector2(-211, 62)
+
+[node name="Tree11" parent="Trees" instance=ExtResource("3_crjhi")]
+position = Vector2(438, -265)
+
+[node name="Tree12" parent="Trees" instance=ExtResource("3_crjhi")]
+position = Vector2(315, -265)
+
+[node name="Tree4" parent="Trees" instance=ExtResource("3_crjhi")]
+position = Vector2(193, -266)
+
+[node name="Tree13" parent="Trees" instance=ExtResource("3_crjhi")]
+position = Vector2(438, -163)
+
+[node name="Tree14" parent="Trees" instance=ExtResource("3_crjhi")]
+position = Vector2(439, 59)
+
+[node name="Bush4" parent="Trees" instance=ExtResource("4_raq23")]
+position = Vector2(-86, 64)
+
+[node name="Tree21" parent="Trees" instance=ExtResource("3_crjhi")]
+position = Vector2(-546, -505)
+
+[node name="Tree20" parent="Trees" instance=ExtResource("3_crjhi")]
+position = Vector2(-653, -505)
+
+[node name="Tree19" parent="Trees" instance=ExtResource("3_crjhi")]
+position = Vector2(-653, -364)
+
+[node name="Tree18" parent="Trees" instance=ExtResource("3_crjhi")]
+position = Vector2(-653, -223)
+
+[node name="Tree17" parent="Trees" instance=ExtResource("3_crjhi")]
+position = Vector2(-653, -82)
+
+[node name="Tree16" parent="Trees" instance=ExtResource("3_crjhi")]
+position = Vector2(-579, 202)
+rotation = 0.00326078
+
+[node name="Tree15" parent="Trees" instance=ExtResource("3_crjhi")]
+position = Vector2(-448, 202)
+rotation = 0.00326078
+
+[node name="Tree10" parent="Trees" instance=ExtResource("3_crjhi")]
+position = Vector2(-317, 202)
+rotation = 0.00326078
+
+[node name="Tree9" parent="Trees" instance=ExtResource("3_crjhi")]
+position = Vector2(-186, 202)
+rotation = 0.00326078
+
+[node name="Tree7" parent="Trees" instance=ExtResource("3_crjhi")]
+position = Vector2(-55, 202)
+rotation = 0.00326078
+
+[node name="Tree22" parent="Trees" instance=ExtResource("3_crjhi")]
+position = Vector2(-655, 65)
+rotation = 0.00326078
+
+[node name="Bush5" parent="Trees" instance=ExtResource("4_raq23")]
+position = Vector2(-508, -44)
+
+[node name="Bush6" parent="Trees" instance=ExtResource("4_raq23")]
+position = Vector2(-512, 80)
+
+[node name="Tree23" parent="Trees" instance=ExtResource("3_crjhi")]
+position = Vector2(240, 80)
+
+[node name="Tree24" parent="Trees" instance=ExtResource("3_crjhi")]
+position = Vector2(149, 80)
+
+[node name="CottageExterior" parent="." instance=ExtResource("5_f363s")]
+position = Vector2(-348, -294)
+
+[node name="FadeOutCanvas" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="FadeOutRect" type="ColorRect" parent="FadeOutCanvas"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+metadata/_edit_lock_ = true
+
+[node name="AudioCollect" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_tqj8t")
+volume_db = -5.0
+
+[node name="UI" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="Inventory" parent="UI" instance=ExtResource("7_jmm56")]
+metadata/_edit_use_anchors_ = true
+
+[connection signal="interact_with_body" from="Witch" to="." method="_on_witch_interaction"]
+[connection signal="player_entered_cottage" from="CottageExterior" to="." method="enter_cottage_transition"]

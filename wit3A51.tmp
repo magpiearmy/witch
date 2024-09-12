@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://cgqvubalfhrgq"]
+
+[ext_resource type="Texture2D" uid="uid://cahhxf06d6fpp" path="res://Witch.png" id="1_tcwvx"]
+[ext_resource type="Script" path="res://witch.gd" id="1_yqisd"]
+[ext_resource type="Texture2D" uid="uid://bmkjakkyhrkgx" path="res://WitchLeft.png" id="3_t6886"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lv8uw"]
+radius = 12.0416
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xcq4b"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_tcwvx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_t6886")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Witch" type="CharacterBody2D"]
+script = ExtResource("1_yqisd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_lv8uw")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_xcq4b")
