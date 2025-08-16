@@ -1,15 +1,23 @@
-[gd_scene load_steps=3 format=3 uid="uid://bfguuf2mt4dia"]
+[gd_scene load_steps=5 format=3 uid="uid://dycdx23itxtdj"]
 
-[ext_resource type="Texture2D" uid="uid://k7bbprplqpsh" path="res://Bush.png" id="1_iw65u"]
+[ext_resource type="Texture2D" uid="uid://db083iq7pscmd" path="res://assets/BerryBush.png" id="1_804ow"]
+[ext_resource type="Script" uid="uid://cbne4cvnytcl0" path="res://scripts/bush.gd" id="1_btb6u"]
+[ext_resource type="PackedScene" uid="uid://cbe1weosiv6om" path="res://scenes/berries.tscn" id="2_t84kr"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_wp8pt"]
-radius = 53.1507
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tymd4"]
+size = Vector2(112, 72)
 
 [node name="Bush" type="StaticBody2D"]
+collision_layer = 3
+script = ExtResource("1_btb6u")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_wp8pt")
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_tymd4")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-3, -1)
-texture = ExtResource("1_iw65u")
+position = Vector2(-1, -17)
+texture = ExtResource("1_804ow")
+
+[node name="Berries" parent="." instance=ExtResource("2_t84kr")]
+position = Vector2(0, -17)

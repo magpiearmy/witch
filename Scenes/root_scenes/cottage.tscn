@@ -1,0 +1,99 @@
+[gd_scene load_steps=6 format=3 uid="uid://cvouocofu0ngp"]
+
+[ext_resource type="Script" uid="uid://tqvtpshyj1hi" path="res://scripts/cottage.gd" id="1_6wfyu"]
+[ext_resource type="PackedScene" uid="uid://b4gvgeuvy86r5" path="res://scenes/cauldron.tscn" id="2_new7p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ovt14"]
+size = Vector2(1000, 300)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hkera"]
+size = Vector2(380, 308)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_di2x3"]
+size = Vector2(337.107, 142.601)
+
+[node name="StartPoint" type="Node2D"]
+position = Vector2(704, 704)
+script = ExtResource("1_6wfyu")
+
+[node name="Floor" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Floor"]
+polygon = PackedVector2Array(-700, 100, -500, -400, 500, -400, 700, 100)
+
+[node name="FloorPolygon" type="Polygon2D" parent="Floor"]
+color = Color(0.604002, 0.383731, 0.183385, 1)
+polygon = PackedVector2Array(-700, 100, -500, -400, 500, -400, 700, 100)
+
+[node name="Walls" type="Node2D" parent="."]
+
+[node name="LeftWall" type="StaticBody2D" parent="Walls"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls/LeftWall"]
+polygon = PackedVector2Array(-700, 100, -700, -200, -500, -700, -500, -400)
+
+[node name="LeftWallPolygon" type="Polygon2D" parent="Walls/LeftWall"]
+color = Color(0.184761, 0.267597, 0.426233, 1)
+polygon = PackedVector2Array(-700, -200, -700, 100, -500, -400, -500, -700)
+
+[node name="RightWall" type="StaticBody2D" parent="Walls"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls/RightWall"]
+polygon = PackedVector2Array(700, 100, 700, -200, 500, -700, 500, -400)
+
+[node name="RightWallPolygon" type="Polygon2D" parent="Walls/RightWall"]
+position = Vector2(1000, 0)
+color = Color(0.184314, 0.266667, 0.427451, 1)
+polygon = PackedVector2Array(-300, -200, -300, 100, -500, -400, -500, -700)
+
+[node name="BackWall" type="StaticBody2D" parent="Walls"]
+
+[node name="StartPoint" type="CollisionShape2D" parent="Walls/BackWall"]
+position = Vector2(0, -550)
+shape = SubResource("RectangleShape2D_ovt14")
+
+[node name="BackWallPolygon" type="Polygon2D" parent="Walls/BackWall"]
+color = Color(0.184314, 0.266667, 0.427451, 1)
+polygon = PackedVector2Array(-500, -400, -500, -700, 500, -700, 500, -400)
+
+[node name="Fireplace" type="StaticBody2D" parent="."]
+position = Vector2(-2, -411)
+
+[node name="FireplaceCollision" type="CollisionShape2D" parent="Fireplace"]
+position = Vector2(1, -100)
+shape = SubResource("RectangleShape2D_hkera")
+
+[node name="FireplacePolygon" type="Polygon2D" parent="Fireplace"]
+color = Color(0.112042, 0.123358, 0.0208804, 1)
+polygon = PackedVector2Array(-189.307, 53.9944, -189.307, -254.006, 190.693, -254.006, 190.693, 53.9944, 110.693, 53.9944, 110.693, -183.006, -107.307, -183.006, -107.307, 53.9944)
+
+[node name="Cauldron" parent="." instance=ExtResource("2_new7p")]
+position = Vector2(-3, -409)
+
+[node name="Door" type="Area2D" parent="."]
+position = Vector2(-1.1073, 317.798)
+
+[node name="DoorCollision" type="CollisionShape2D" parent="Door"]
+position = Vector2(2.1073, -165.099)
+shape = SubResource("RectangleShape2D_di2x3")
+
+[node name="FadeOutCanvas" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="FadeOutRect" type="ColorRect" parent="FadeOutCanvas"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+metadata/_edit_lock_ = true
+
+[node name="StartPoint" type="Marker2D" parent="."]
+position = Vector2(1.72144, 24.5474)
+
+[node name="ExitTransitionEnd" type="Marker2D" parent="."]
+position = Vector2(1, 186)
+
+[connection signal="body_entered" from="Door" to="." method="_cottage_exit_transition"]

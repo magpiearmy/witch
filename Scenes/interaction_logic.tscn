@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://jobe6slrnavj"]
+
+[ext_resource type="Script" uid="uid://cbq6s6qpandxv" path="res://scripts/interaction_logic.gd" id="1_b2bbm"]
+
+[node name="InteractionLogic" type="Node"]
+script = ExtResource("1_b2bbm")

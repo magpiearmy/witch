@@ -1,0 +1,86 @@
+[gd_scene load_steps=6 format=3 uid="uid://cro6u4yi6d4s8"]
+
+[ext_resource type="Script" uid="uid://b3u6kvv6w3q6d" path="res://scripts/forest.gd" id="1_3f304"]
+[ext_resource type="PackedScene" uid="uid://w4bbewfnds7w" path="res://scenes/tree.tscn" id="4_m88r8"]
+[ext_resource type="PackedScene" uid="uid://bfguuf2mt4dia" path="res://scenes/grass.tscn" id="5_2cdl4"]
+[ext_resource type="PackedScene" uid="uid://dycdx23itxtdj" path="res://scenes/bush.tscn" id="6_ftuxh"]
+[ext_resource type="PackedScene" uid="uid://b5rv55i04dx8" path="res://scenes/cottage_exterior.tscn" id="7_n2f1n"]
+
+[node name="Forest" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_3f304")
+metadata/_edit_lock_ = true
+
+[node name="Background" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="Background"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 4.0
+offset_right = -1600.0
+offset_bottom = -896.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0.0672714, 0.192998, 0.259704, 0.6)
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
+
+[node name="Trees" type="Node2D" parent="."]
+y_sort_enabled = true
+metadata/_edit_lock_ = true
+
+[node name="Tree15" parent="Trees" instance=ExtResource("4_m88r8")]
+position = Vector2(127, 691)
+rotation = 0.00326078
+
+[node name="Tree10" parent="Trees" instance=ExtResource("4_m88r8")]
+position = Vector2(262, 766)
+rotation = 0.00326078
+
+[node name="Tree9" parent="Trees" instance=ExtResource("4_m88r8")]
+position = Vector2(633, 709)
+rotation = 0.00326078
+
+[node name="Tree7" parent="Trees" instance=ExtResource("4_m88r8")]
+position = Vector2(508, 759)
+rotation = 0.00326078
+
+[node name="Bush5" parent="Trees" instance=ExtResource("5_2cdl4")]
+position = Vector2(254, 472)
+
+[node name="Bush6" parent="Trees" instance=ExtResource("5_2cdl4")]
+position = Vector2(528, 462)
+
+[node name="Bush3" parent="Trees" instance=ExtResource("6_ftuxh")]
+position = Vector2(384, 701)
+
+[node name="CottageExterior" parent="." instance=ExtResource("7_n2f1n")]
+position = Vector2(400, 255)
+
+[node name="FadeOutCanvas" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="FadeOutRect" type="ColorRect" parent="FadeOutCanvas"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+metadata/_edit_lock_ = true
+
+[node name="StartPoint" type="Marker2D" parent="."]
+position = Vector2(378, 509)
+
+[node name="Tree" parent="." instance=ExtResource("4_m88r8")]
+position = Vector2(-16, 594)
+
+[node name="Tree2" parent="." instance=ExtResource("4_m88r8")]
+position = Vector2(759, 609)
+
+[connection signal="player_entered_cottage" from="CottageExterior" to="." method="cottage_enter_transition"]

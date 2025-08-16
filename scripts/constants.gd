@@ -1,0 +1,14 @@
+extends Node
+
+enum FruitType {BLUE, PURPLE, RED}
+
+enum Item {
+	RED_FRUIT,
+	BLUE_FRUIT,
+	PURPLE_FRUIT,
+	PINK_BERRIES,
+	BLACK_BERRIES,
+	YELLOW_HONEY,
+	ORANGE_HONEY,
+	SUGAR_CANE
+}

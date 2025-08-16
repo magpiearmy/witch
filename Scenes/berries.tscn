@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://cbe1weosiv6om"]
+
+[ext_resource type="Texture2D" uid="uid://dlpcv6dlboob4" path="res://assets/Berries.png" id="1_fxkvc"]
+[ext_resource type="Script" uid="uid://cyq065wt5vvax" path="res://scenes/berries.gd" id="2_dww6s"]
+[ext_resource type="Script" uid="uid://d0ier0hlla06b" path="res://scripts/collectable.gd" id="3_pcb6n"]
+
+[node name="Berries" type="Sprite2D"]
+texture = ExtResource("1_fxkvc")
+script = ExtResource("2_dww6s")
+
+[node name="Collectable" type="Node2D" parent="." node_paths=PackedStringArray("item")]
+script = ExtResource("3_pcb6n")
+item = NodePath("..")
+metadata/_custom_type_script = "uid://d0ier0hlla06b"

@@ -1,10 +1,10 @@
 [gd_scene load_steps=8 format=3 uid="uid://cgqvubalfhrgq"]
 
-[ext_resource type="Script" path="res://Scenes/witch.gd" id="1_yqisd"]
-[ext_resource type="Texture2D" uid="uid://cxoqa2jet23y8" path="res://WitchRight.png" id="2_3bjuf"]
-[ext_resource type="Texture2D" uid="uid://bmkjakkyhrkgx" path="res://WitchLeft.png" id="3_t6886"]
-[ext_resource type="Texture2D" uid="uid://cboxjwm6ghwu6" path="res://WitchUp.png" id="4_esqot"]
-[ext_resource type="Texture2D" uid="uid://b2lyrdy8uoipm" path="res://WitchDown.png" id="5_xp5tl"]
+[ext_resource type="Script" uid="uid://o68dqes5ioas" path="res://scripts/witch.gd" id="1_yqisd"]
+[ext_resource type="Texture2D" uid="uid://cxoqa2jet23y8" path="res://assets/WitchRight.png" id="2_3bjuf"]
+[ext_resource type="Texture2D" uid="uid://bmkjakkyhrkgx" path="res://assets/WitchLeft.png" id="3_t6886"]
+[ext_resource type="Texture2D" uid="uid://cboxjwm6ghwu6" path="res://assets/WitchUp.png" id="4_esqot"]
+[ext_resource type="Texture2D" uid="uid://b2lyrdy8uoipm" path="res://assets/WitchDown.png" id="5_xp5tl"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sau2g"]
 radius = 40.0
@@ -44,3 +44,6 @@ frame = 3
 
 [node name="Selector" type="RayCast2D" parent="."]
 target_position = Vector2(0, 0)
+collision_mask = 2
+
+[node name="Camera2D" type="Camera2D" parent="."]

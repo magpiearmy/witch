@@ -1,0 +1,44 @@
+[gd_scene load_steps=3 format=3 uid="uid://dehhmds3pvmkm"]
+
+[ext_resource type="Script" uid="uid://d078m44k6qh1n" path="res://scripts/inventory_slot.gd" id="1_dxvxp"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_dxvxp"]
+font_size = 24
+
+[node name="InventoryItem" type="Control"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1472.0
+offset_bottom = -772.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_dxvxp")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer"]
+layout_mode = 2
+color = Color(0.573504, 0.639843, 0.569718, 1)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -32.0
+offset_top = -34.0
+grow_horizontal = 0
+grow_vertical = 0
+label_settings = SubResource("LabelSettings_dxvxp")
+horizontal_alignment = 2
