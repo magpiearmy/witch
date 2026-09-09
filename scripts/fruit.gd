@@ -3,14 +3,13 @@ class_name Fruit
 
 var type: Constants.FruitType
 
+var type_to_item_map = {
+	Constants.FruitType.RED: Constants.Item.RED_FRUIT,
+	Constants.FruitType.BLUE: Constants.Item.BLUE_FRUIT,
+	Constants.FruitType.PURPLE: Constants.Item.PURPLE_FRUIT
+}
+
 func set_type(type: Constants.FruitType):
 	self.type = type
-	match type:
-		Constants.FruitType.RED:
-			$Collectable.item_type = Constants.Item.RED_FRUIT
-		Constants.FruitType.BLUE:
-			$Collectable.item_type = Constants.Item.BLUE_FRUIT
-		Constants.FruitType.PURPLE:
-			$Collectable.item_type = Constants.Item.PURPLE_FRUIT
-	
+	$Collectable.item_type = type_to_item_map[type]	
 	$AnimatedSprite2D.frame = type

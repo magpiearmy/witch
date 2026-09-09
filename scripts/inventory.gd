@@ -7,12 +7,12 @@ extends Control
 ]
 
 func _ready():
-	SignalBus.on_item_collect.connect(on_collected)
+	SignalBus.on_item_collect.connect(try_collect)
 
-func on_collected(item: Collectable, node: Node2D):
+func try_collect(item: Collectable, node: Node2D):
 	for slot in slots:
 		if slot.accept(item, node):
+			SignalBus.on_collect_success.emit(node)
 			item.on_collected()
-			SignalBus.on_collect_success.emit()
 			return
 	SignalBus.on_collect_fail.emit()

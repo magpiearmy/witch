@@ -26,10 +26,9 @@ func _process(_delta: float):
 	
 		if movement_vector != Vector2.ZERO and movement_vector != current_direction:
 			set_direction(movement_vector)
-			
-		move_and_slide()
 		
-	
+		move_and_slide()
+
 func _ready():
 	set_direction(Vector2.RIGHT)
 	
@@ -59,19 +58,19 @@ func set_direction(direction: Vector2):
 func interact():
 	if $Selector.is_colliding(): 
 		interact_with_body.emit($Selector.get_collider())
-		
 
 func transition(dest: Vector2, tween: Tween, zoom_in: bool):
+	const duration = 1.0
 	var target_zoom = Vector2(1.2, 1.2) if zoom_in else Vector2(1,1)
-	tween.tween_property($Camera2D, "zoom", target_zoom, 1)
-	tween.tween_property(self, "global_position", dest, 1)
+	tween.tween_property($Camera2D, "zoom", target_zoom, duration)
+	tween.tween_property(self, "global_position", dest, duration)
 	move_state = MoveState.IN_TRANSITION
 	
 func end_transition():
 	move_state = MoveState.IDLE
-	
+
 func enable_movement():
 	move_state = MoveState.IDLE
-	
+
 func disable_movement():
 	move_state = MoveState.DISABLED

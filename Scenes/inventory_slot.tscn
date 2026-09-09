@@ -1,11 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://dehhmds3pvmkm"]
+[gd_scene format=3 uid="uid://dehhmds3pvmkm"]
 
 [ext_resource type="Script" uid="uid://d078m44k6qh1n" path="res://scripts/inventory_slot.gd" id="1_dxvxp"]
+[ext_resource type="Texture2D" uid="uid://0lk8h0yn7pof" path="res://assets/inventory_slot.png" id="2_bxqf6"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_dxvxp"]
-font_size = 24
+font_size = 32
+outline_size = 16
+outline_color = Color(0, 0, 0, 1)
 
-[node name="InventoryItem" type="Control"]
+[node name="InventorySlot" type="Control" unique_id=644541341]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 3
 anchors_preset = 15
@@ -17,7 +20,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_dxvxp")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=326948222]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -25,19 +28,32 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ColorRect" type="ColorRect" parent="MarginContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer" unique_id=1765426355]
 layout_mode = 2
-color = Color(0.573504, 0.639843, 0.569718, 1)
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
 
-[node name="Label" type="Label" parent="."]
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/MarginContainer" unique_id=903906494]
+layout_mode = 2
+color = Color(0.8121964, 0.9117297, 0.7986534, 1)
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer" unique_id=1745769521]
+layout_mode = 2
+texture = ExtResource("2_bxqf6")
+
+[node name="Label" type="Label" parent="." unique_id=831781268]
 layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
+anchors_preset = -1
+anchor_left = 0.758
+anchor_top = 0.74200004
+anchor_right = 1.008
 anchor_bottom = 1.0
-offset_left = -32.0
-offset_top = -34.0
+offset_left = -0.024002075
+offset_top = 0.023994446
+offset_right = -0.024002075
+offset_bottom = 1.0
 grow_horizontal = 0
 grow_vertical = 0
 label_settings = SubResource("LabelSettings_dxvxp")

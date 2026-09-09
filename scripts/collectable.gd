@@ -1,4 +1,4 @@
-extends Node2D
+extends Node
 class_name Collectable
 
 @export var item: Node2D
