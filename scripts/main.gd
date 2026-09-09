@@ -35,17 +35,17 @@ func _input(event: InputEvent):
 		$Overworld.process_mode = Node.PROCESS_MODE_PAUSABLE
 
 func _on_witch_interaction(body: Node2D) -> void:
-	print("Witch interacts with: " + str(body))
 	if body.has_method("interact"):
 		body.interact()
 		return # only interact with first thing
 	
 func _switch_overworld_scene(scene: PackedScene):
 	var new_scene = scene.instantiate()
-	if current_overworld_scene:
-		$Overworld.remove_child(current_overworld_scene)
 	$Overworld.add_child(new_scene)
 	witch.reparent(new_scene, false)
+	if current_overworld_scene:
+		$Overworld.remove_child(current_overworld_scene)
+		current_overworld_scene.queue_free()
 	witch.end_transition()
 	witch.global_position = new_scene.get_node("StartPoint").global_position
 	current_overworld_scene = new_scene

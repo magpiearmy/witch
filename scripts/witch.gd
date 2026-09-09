@@ -4,15 +4,11 @@ signal interact_with_body(body)
 
 const SELECTOR_LENGTH = 72
 const MOVE_SPEED = 350
-var current_speed = 0
 var current_direction = Vector2.DOWN
-
-var inventory = []
 
 enum MoveState
 {
 	IDLE,
-	MOVING,
 	IN_TRANSITION,
 	DISABLED
 }
@@ -68,9 +64,3 @@ func transition(dest: Vector2, tween: Tween, zoom_in: bool):
 	
 func end_transition():
 	move_state = MoveState.IDLE
-
-func enable_movement():
-	move_state = MoveState.IDLE
-
-func disable_movement():
-	move_state = MoveState.DISABLED

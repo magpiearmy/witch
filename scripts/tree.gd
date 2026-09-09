@@ -1,7 +1,6 @@
 extends StaticBody2D
 
 var fruit_type = Constants.FruitType.values().pick_random()
-var fruit_scene = preload("res://scenes/fruit.tscn")
 @onready var fruit_template = $Fruit.duplicate()
 
 func _ready():
