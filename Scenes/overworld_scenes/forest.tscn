@@ -220,23 +220,10 @@ metadata/_scene_painted = true
 position = Vector2(-70.04816, 23.253326)
 metadata/_scene_painted = true
 
-[node name="FadeOutCanvas" type="CanvasLayer" parent="." unique_id=852207748]
-layer = 2
-
-[node name="FadeOutRect" type="ColorRect" parent="FadeOutCanvas" unique_id=156162541]
-modulate = Color(1, 1, 1, 0)
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 1)
-metadata/_edit_lock_ = true
-
 [node name="CottageExterior" parent="." unique_id=1504973213 instance=ExtResource("7_n2f1n")]
 position = Vector2(400, 255)
 
 [node name="StartPoint" type="Marker2D" parent="." unique_id=441290513]
 position = Vector2(378, 509)
 
-[connection signal="player_entered_cottage" from="CottageExterior" to="." method="cottage_enter_transition"]
+[connection signal="player_entered_cottage" from="CottageExterior" to="." method="_on_cottage_entered"]

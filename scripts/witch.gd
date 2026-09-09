@@ -6,35 +6,23 @@ const SELECTOR_LENGTH = 72
 const MOVE_SPEED = 350
 var current_direction = Vector2.DOWN
 
-enum MoveState
-{
-	IDLE,
-	IN_TRANSITION,
-	DISABLED
-}
-var move_state = MoveState.IDLE
-
 func _process(_delta: float):
-	if move_state not in [MoveState.IN_TRANSITION, MoveState.DISABLED]:
-		var movement_vector = Input.get_vector("playerLeft", "playerRight", "playerUp", "playerDown")
-		var run_modifier = 2 if Input.is_action_pressed("playerRun") else 1
-		velocity = movement_vector * MOVE_SPEED * run_modifier
-	
-		if movement_vector != Vector2.ZERO and movement_vector != current_direction:
-			set_direction(movement_vector)
-		
-		move_and_slide()
+	var movement_vector = Input.get_vector("playerLeft", "playerRight", "playerUp", "playerDown")
+	var run_modifier = 2 if Input.is_action_pressed("playerRun") else 1
+	velocity = movement_vector * MOVE_SPEED * run_modifier
+
+	if movement_vector != Vector2.ZERO and movement_vector != current_direction:
+		set_direction(movement_vector)
+
+	move_and_slide()
 
 func _ready():
 	set_direction(Vector2.RIGHT)
-	
+
 func _input(event):
-	if move_state in [MoveState.IN_TRANSITION, MoveState.DISABLED]:
-		return
-	
 	if event.is_action_pressed("interact"):
 		interact()
-		
+
 func set_direction(direction: Vector2):
 	current_direction = direction
 	if direction.x > 0:
@@ -52,15 +40,5 @@ func set_direction(direction: Vector2):
 
 
 func interact():
-	if $Selector.is_colliding(): 
+	if $Selector.is_colliding():
 		interact_with_body.emit($Selector.get_collider())
-
-func transition(dest: Vector2, tween: Tween, zoom_in: bool):
-	const duration = 1.0
-	var target_zoom = Vector2(1.2, 1.2) if zoom_in else Vector2(1,1)
-	tween.tween_property($Camera2D, "zoom", target_zoom, duration)
-	tween.tween_property(self, "global_position", dest, duration)
-	move_state = MoveState.IN_TRANSITION
-	
-func end_transition():
-	move_state = MoveState.IDLE

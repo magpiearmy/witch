@@ -26,6 +26,7 @@ buses/default_bus_layout="uid://d3nau8vrjs6p5"
 
 SignalBus="*res://scripts/signal_bus.gd"
 Constants="*res://scripts/constants.gd"
+SceneTransition="*res://scripts/scene_transition.gd"
 
 [display]
 

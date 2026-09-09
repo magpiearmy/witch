@@ -76,23 +76,10 @@ position = Vector2(-1.1073, 317.798)
 position = Vector2(2.1073, -165.099)
 shape = SubResource("RectangleShape2D_di2x3")
 
-[node name="FadeOutCanvas" type="CanvasLayer" parent="." unique_id=400505028]
-layer = 2
-
-[node name="FadeOutRect" type="ColorRect" parent="FadeOutCanvas" unique_id=845605091]
-modulate = Color(1, 1, 1, 0)
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 1)
-metadata/_edit_lock_ = true
-
 [node name="StartPoint" type="Marker2D" parent="." unique_id=1755323480]
 position = Vector2(1.72144, 24.5474)
 
 [node name="ExitTransitionEnd" type="Marker2D" parent="." unique_id=88148999]
 position = Vector2(1, 186)
 
-[connection signal="body_entered" from="Door" to="." method="_cottage_exit_transition"]
+[connection signal="body_entered" from="Door" to="." method="_on_door_body_entered"]
