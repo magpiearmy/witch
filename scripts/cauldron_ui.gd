@@ -1,7 +1,7 @@
 extends Control
 ## Opened by SignalBus.cauldron_opened (main.gd freezes the overworld at the same time).
 ## Lists every recipe in Constants.RECIPES and brews the affordable ones,
-## drawing ingredients from and returning results to the inventory.
+## drawing ingredients from and returning results to the Inventory.
 
 const BREW_TIME := 1.2
 
@@ -9,7 +9,6 @@ const BREW_TIME := 1.2
 @onready var _cauldron: TextureRect = $Center/Panel/Margin/VBox/Cauldron
 @onready var _pop: AudioStreamPlayer = $Pop
 
-var _inventory: Node
 var _brewing := false
 var _bubble_tween: Tween
 
@@ -18,9 +17,6 @@ func _ready() -> void:
 	SignalBus.cauldron_opened.connect(_open)
 
 func _open() -> void:
-	_inventory = get_tree().get_first_node_in_group("inventory")
-	if _inventory == null:
-		return
 	_rebuild()
 	show()
 
@@ -62,7 +58,7 @@ func _make_row(recipe: Dictionary) -> Control:
 	var brew := Button.new()
 	brew.text = "Brew"
 	brew.focus_mode = Control.FOCUS_NONE
-	brew.disabled = _brewing or not _inventory.can_craft(recipe["inputs"])
+	brew.disabled = _brewing or not Inventory.can_craft(recipe["inputs"])
 	brew.pressed.connect(_brew.bind(recipe))
 	row.add_child(brew)
 	return row
@@ -92,19 +88,19 @@ func _text(s: String) -> Label:
 	return l
 
 func _brew(recipe: Dictionary) -> void:
-	if _brewing or not _inventory.can_craft(recipe["inputs"]):
+	if _brewing or not Inventory.can_craft(recipe["inputs"]):
 		return
 	_brewing = true
-	_inventory.take(recipe["inputs"])
+	Inventory.take(recipe["inputs"])
 	_rebuild()
 	_start_bubbling()
 
 	await get_tree().create_timer(BREW_TIME).timeout
 
-	if not _inventory.give(recipe["output"], 1):
-		# bag filled up mid-brew: hand the ingredients back
+	if not Inventory.give(recipe["output"], 1):
+		# satchel filled up mid-brew: hand the ingredients back
 		for item_type in recipe["inputs"]:
-			_inventory.give(item_type, recipe["inputs"][item_type])
+			Inventory.give(item_type, recipe["inputs"][item_type])
 	else:
 		_pop.play()
 
