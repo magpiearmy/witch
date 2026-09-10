@@ -4,7 +4,7 @@ extends CanvasLayer
 
 signal midpoint  ## fired while the screen is fully covered, after the swap runs
 
-var fade_duration := 0.4
+var fade_duration := 0.6
 
 var _rect: ColorRect
 var _busy := false
