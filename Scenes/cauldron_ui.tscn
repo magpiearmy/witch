@@ -1,0 +1,92 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/cauldron_ui.gd" id="1_cui"]
+[ext_resource type="Texture2D" uid="uid://dmlav0qlmotkj" path="res://assets/Cauldron.png" id="2_cui"]
+[ext_resource type="AudioStream" uid="uid://5stnyqtvfnrb" path="res://assets/pop.mp3" id="3_cui"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
+bg_color = Color(0.965, 0.925, 0.84, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.42, 0.3, 0.18, 1)
+corner_radius_top_left = 18
+corner_radius_top_right = 18
+corner_radius_bottom_right = 18
+corner_radius_bottom_left = 18
+shadow_color = Color(0, 0, 0, 0.25)
+shadow_size = 10
+
+[node name="CauldronUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cui")
+
+[node name="Dim" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.09, 0.07, 0.11, 0.55)
+
+[node name="Center" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Panel" type="PanelContainer" parent="Center"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
+
+[node name="Margin" type="MarginContainer" parent="Center/Panel"]
+layout_mode = 2
+theme_override_constants/margin_left = 28
+theme_override_constants/margin_top = 28
+theme_override_constants/margin_right = 28
+theme_override_constants/margin_bottom = 28
+
+[node name="VBox" type="VBoxContainer" parent="Center/Panel/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="Title" type="Label" parent="Center/Panel/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.29, 0.21, 0.13, 1)
+theme_override_font_sizes/font_size = 34
+text = "The Cauldron"
+horizontal_alignment = 1
+
+[node name="Cauldron" type="TextureRect" parent="Center/Panel/Margin/VBox"]
+custom_minimum_size = Vector2(140, 140)
+layout_mode = 2
+size_flags_horizontal = 4
+pivot_offset = Vector2(70, 70)
+texture = ExtResource("2_cui")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="RecipeList" type="VBoxContainer" parent="Center/Panel/Margin/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Hint" type="Label" parent="Center/Panel/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.5, 0.42, 0.32, 1)
+theme_override_font_sizes/font_size = 16
+text = "Press Esc to step away"
+horizontal_alignment = 1
+
+[node name="Pop" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_cui")
+volume_db = -4.0
