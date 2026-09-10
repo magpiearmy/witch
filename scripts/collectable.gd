@@ -6,7 +6,7 @@ var item_type: Constants.Item
 
 func try_collect():
 	if item_type != null:
-		SignalBus.on_item_collect.emit(self, item)
+		SignalBus.item_collected.emit(self, item)
 
 func on_collected():
 	item.queue_free()

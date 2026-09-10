@@ -1,5 +1,5 @@
 extends Control
-## Opened by SignalBus.cauldron (main.gd freezes the overworld at the same time).
+## Opened by SignalBus.cauldron_opened (main.gd freezes the overworld at the same time).
 ## Lists every recipe in Constants.RECIPES and brews the affordable ones,
 ## drawing ingredients from and returning results to the inventory.
 
@@ -15,7 +15,7 @@ var _bubble_tween: Tween
 
 func _ready() -> void:
 	hide()
-	SignalBus.cauldron.connect(_open)
+	SignalBus.cauldron_opened.connect(_open)
 
 func _open() -> void:
 	_inventory = get_tree().get_first_node_in_group("inventory")
@@ -26,7 +26,7 @@ func _open() -> void:
 
 func _close() -> void:
 	hide()
-	SignalBus.cauldron_closed.emit()  # main.gd unfreezes the overworld
+	SignalBus.cauldron_closed.emit()
 
 func _input(event: InputEvent) -> void:
 	if visible and event.is_action_pressed("cancel"):

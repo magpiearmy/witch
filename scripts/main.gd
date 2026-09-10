@@ -13,11 +13,11 @@ func _ready() -> void:
 
 func _connect_signals():
 	witch.connect("interact_with_body", _on_witch_interaction)
-	SignalBus.enter_cottage.connect(func(): _go_to(cottage_scene))
-	SignalBus.exit_cottage.connect(func(): _go_to(forest_scene))
-	SignalBus.on_collect_success.connect(_on_collect)
-	SignalBus.on_collect_fail.connect(_on_collect_fail)
-	SignalBus.cauldron.connect(_on_cauldron_interact)
+	SignalBus.cottage_entered.connect(func(): _go_to(cottage_scene))
+	SignalBus.cottage_exited.connect(func(): _go_to(forest_scene))
+	SignalBus.collect_successful.connect(_on_collect)
+	SignalBus.collect_failed.connect(_on_collect_fail)
+	SignalBus.cauldron_opened.connect(_on_cauldron_interact)
 	SignalBus.cauldron_closed.connect(_on_cauldron_closed)
 
 func _on_collect(_item):

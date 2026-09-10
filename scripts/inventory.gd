@@ -8,15 +8,15 @@ extends Control
 
 func _ready():
 	add_to_group("inventory")
-	SignalBus.on_item_collect.connect(try_collect)
+	SignalBus.item_collected.connect(try_collect)
 
 func try_collect(item: Collectable, node: Node2D):
 	for slot in slots:
 		if slot.accept(item, node):
-			SignalBus.on_collect_success.emit(node)
+			SignalBus.collect_successful.emit(node)
 			item.on_collected()
 			return
-	SignalBus.on_collect_fail.emit()
+	SignalBus.collect_failed.emit()
 
 # --- brewing API ----------------------------------------------------------
 

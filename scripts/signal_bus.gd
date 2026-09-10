@@ -1,11 +1,11 @@
 extends Node
 
-signal on_item_collect(collectable: Node2D)
-signal on_collect_success(collectable: Node2D)
-signal on_collect_fail
+signal item_collected(collectable: Node2D)
+signal collect_successful(collectable: Node2D)
+signal collect_failed
 
-signal cauldron
+signal cauldron_opened
 signal cauldron_closed
 
-signal enter_cottage
-signal exit_cottage
+signal cottage_entered
+signal cottage_exited

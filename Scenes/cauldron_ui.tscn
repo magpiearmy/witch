@@ -1,6 +1,6 @@
-[gd_scene load_steps=5 format=3]
+[gd_scene format=3 uid="uid://euwcfq8wgxje"]
 
-[ext_resource type="Script" path="res://scripts/cauldron_ui.gd" id="1_cui"]
+[ext_resource type="Script" uid="uid://csqqn443q0128" path="res://scripts/cauldron_ui.gd" id="1_cui"]
 [ext_resource type="Texture2D" uid="uid://dmlav0qlmotkj" path="res://assets/Cauldron.png" id="2_cui"]
 [ext_resource type="AudioStream" uid="uid://5stnyqtvfnrb" path="res://assets/pop.mp3" id="3_cui"]
 
@@ -18,7 +18,7 @@ corner_radius_bottom_left = 18
 shadow_color = Color(0, 0, 0, 0.25)
 shadow_size = 10
 
-[node name="CauldronUI" type="Control"]
+[node name="CauldronUI" type="Control" unique_id=109544508]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -27,7 +27,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_cui")
 
-[node name="Dim" type="ColorRect" parent="."]
+[node name="Dim" type="ColorRect" parent="." unique_id=369774964]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -36,7 +36,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.09, 0.07, 0.11, 0.55)
 
-[node name="Center" type="CenterContainer" parent="."]
+[node name="Center" type="CenterContainer" parent="." unique_id=2029378014]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -45,29 +45,29 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="Panel" type="PanelContainer" parent="Center"]
+[node name="Panel" type="PanelContainer" parent="Center" unique_id=555539984]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
 
-[node name="Margin" type="MarginContainer" parent="Center/Panel"]
+[node name="Margin" type="MarginContainer" parent="Center/Panel" unique_id=1689682250]
 layout_mode = 2
 theme_override_constants/margin_left = 28
 theme_override_constants/margin_top = 28
 theme_override_constants/margin_right = 28
 theme_override_constants/margin_bottom = 28
 
-[node name="VBox" type="VBoxContainer" parent="Center/Panel/Margin"]
+[node name="VBox" type="VBoxContainer" parent="Center/Panel/Margin" unique_id=469827051]
 layout_mode = 2
 theme_override_constants/separation = 14
 
-[node name="Title" type="Label" parent="Center/Panel/Margin/VBox"]
+[node name="Title" type="Label" parent="Center/Panel/Margin/VBox" unique_id=1164033530]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.29, 0.21, 0.13, 1)
 theme_override_font_sizes/font_size = 34
 text = "The Cauldron"
 horizontal_alignment = 1
 
-[node name="Cauldron" type="TextureRect" parent="Center/Panel/Margin/VBox"]
+[node name="Cauldron" type="TextureRect" parent="Center/Panel/Margin/VBox" unique_id=692762994]
 custom_minimum_size = Vector2(140, 140)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -76,17 +76,17 @@ texture = ExtResource("2_cui")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="RecipeList" type="VBoxContainer" parent="Center/Panel/Margin/VBox"]
+[node name="RecipeList" type="VBoxContainer" parent="Center/Panel/Margin/VBox" unique_id=596701627]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="Hint" type="Label" parent="Center/Panel/Margin/VBox"]
+[node name="Hint" type="Label" parent="Center/Panel/Margin/VBox" unique_id=827586085]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.5, 0.42, 0.32, 1)
 theme_override_font_sizes/font_size = 16
 text = "Press Esc to step away"
 horizontal_alignment = 1
 
-[node name="Pop" type="AudioStreamPlayer" parent="."]
+[node name="Pop" type="AudioStreamPlayer" parent="." unique_id=922947212]
 stream = ExtResource("3_cui")
 volume_db = -4.0
