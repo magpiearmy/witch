@@ -25,7 +25,8 @@ func _open() -> void:
 	show()
 
 func _close() -> void:
-	hide()  # main.gd re-enables the overworld on the same "cancel" press
+	hide()
+	SignalBus.cauldron_closed.emit()  # main.gd unfreezes the overworld
 
 func _input(event: InputEvent) -> void:
 	if visible and event.is_action_pressed("cancel"):

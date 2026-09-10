@@ -18,6 +18,7 @@ func _connect_signals():
 	SignalBus.on_collect_success.connect(_on_collect)
 	SignalBus.on_collect_fail.connect(_on_collect_fail)
 	SignalBus.cauldron.connect(_on_cauldron_interact)
+	SignalBus.cauldron_closed.connect(_on_cauldron_closed)
 
 func _on_collect(_item):
 	$Sounds/AudioCollect.pitch_scale = 2
@@ -29,10 +30,9 @@ func _on_collect_fail():
 	
 func _on_cauldron_interact():
 	$Overworld.process_mode = Node.PROCESS_MODE_DISABLED
-	
-func _input(event: InputEvent):
-	if event.is_action_pressed("cancel"):
-		$Overworld.process_mode = Node.PROCESS_MODE_PAUSABLE
+
+func _on_cauldron_closed():
+	$Overworld.process_mode = Node.PROCESS_MODE_PAUSABLE
 
 func _on_witch_interaction(body: Node2D) -> void:
 	if body.has_method("interact"):
