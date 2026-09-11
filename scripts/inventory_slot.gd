@@ -5,8 +5,8 @@ extends Control
 @onready var _icon: TextureRect = $Icon
 @onready var _label: Label = $Label
 
-## `type` is a Constants.Item, or -1 (with amount 0) for an empty cell.
-func render(type: int, amount: int) -> void:
+## `type` is a Constants.Item; Item.NONE with amount 0 means an empty cell.
+func render(type: Constants.Item, amount: int) -> void:
 	if amount > 0:
 		_icon.visible = true
 		_icon.texture = Constants.ITEM_ICON[type]

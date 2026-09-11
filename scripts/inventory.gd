@@ -1,46 +1,41 @@
 extends Node
-## Autoload. The player's satchel: a flat list of item stacks.
+## Autoload. The player's satchel: one stack per item type.
 ## Rendered by InventoryHud (always-on quick view of the first few) and
 ## InventoryPanel (the full grid, toggled with the "inventory" action).
 
 const CAPACITY := 12
 
-## Each entry: {"type": Constants.Item, "amount": int}
-var stacks: Array[Dictionary] = []
+## How many of each item is held. Dictionaries keep insertion order, so this
+## doubles as the slot order the views draw, oldest find first.
+var stacks: Dictionary[Constants.Item, int] = {}
 
 signal changed
 
 func _ready() -> void:
 	SignalBus.item_collected.connect(_on_item_collected)
 
-func _on_item_collected(collectable, node) -> void:
+func _on_item_collected(collectable: Collectable, item: Node2D) -> void:
 	if add(collectable.item_type):
-		SignalBus.collect_successful.emit(node)
+		SignalBus.collect_successful.emit(item)
 		collectable.on_collected()
 	else:
 		SignalBus.collect_failed.emit()
 
-func _index_of(type: Constants.Item) -> int:
-	for i in stacks.size():
-		if stacks[i]["type"] == type:
-			return i
-	return -1
-
 func count(type: Constants.Item) -> int:
-	var i := _index_of(type)
-	return stacks[i]["amount"] if i != -1 else 0
+	return stacks.get(type, 0)
 
-## Add items, stacking onto an existing pile. False only when a new
-## stack is needed and the satchel is full.
+## A new item type has nowhere to go. An item already held always stacks.
+func is_full() -> bool:
+	return stacks.size() >= CAPACITY
+
+## Add items, stacking onto an existing pile. False only when a new stack is
+## needed and the satchel is full.
 func add(type: Constants.Item, amount := 1) -> bool:
-	var i := _index_of(type)
-	if i != -1:
-		stacks[i]["amount"] += amount
-		changed.emit()
-		return true
-	if stacks.size() >= CAPACITY:
-		return false
-	stacks.append({"type": type, "amount": amount})
+	if not stacks.has(type):
+		if is_full():
+			return false
+		stacks[type] = 0
+	stacks[type] += amount
 	changed.emit()
 	return true
 
@@ -60,20 +55,20 @@ func take(inputs: Dictionary) -> void:
 	assert(can_craft(inputs), "take() called for ingredients that aren't in stock")
 	var took_something := false
 	for type in inputs:
-		var i := _index_of(type)
-		if i == -1:
+		if not stacks.has(type):
 			continue
-		stacks[i]["amount"] -= inputs[type]
-		if stacks[i]["amount"] <= 0:
-			stacks.remove_at(i)
+		stacks[type] -= inputs[type]
+		if stacks[type] <= 0:
+			stacks.erase(type)
 		took_something = true
 	if took_something:
 		changed.emit()
 
 ## Push the current contents into an array of InventorySlot views.
 func render_into(slots: Array) -> void:
+	var types := stacks.keys()
 	for i in slots.size():
-		if i < stacks.size():
-			slots[i].render(stacks[i]["type"], stacks[i]["amount"])
+		if i < types.size():
+			slots[i].render(types[i], stacks[types[i]])
 		else:
-			slots[i].render(-1, 0)
+			slots[i].render(Constants.Item.NONE, 0)
