@@ -35,22 +35,49 @@ var ITEM_NAME := {
 	Item.BERRY_TONIC: "Berry Tonic",
 }
 
-## Flat block colour for each item, used by inventory swatches and cauldron chips.
-var ITEM_COLOR := {
-	Item.RED_FRUIT: Color("d9584f"),
-	Item.BLUE_FRUIT: Color("5b8fd9"),
-	Item.PURPLE_FRUIT: Color("9b5bd9"),
-	Item.PINK_BERRIES: Color("e58cc4"),
-	Item.BLACK_BERRIES: Color("3a2f4a"),
-	Item.YELLOW_HONEY: Color("f2c94c"),
-	Item.ORANGE_HONEY: Color("f2994a"),
-	Item.SUGAR_CANE: Color("d9d3c2"),
-	Item.RED_JUICE: Color("c0392b"),
-	Item.BERRY_JAM: Color("c2185b"),
-	Item.GRAPE_CORDIAL: Color("6c3483"),
-	Item.FRUIT_PUNCH: Color("e67e22"),
-	Item.BERRY_TONIC: Color("2e86ab"),
-}
+## Icon texture for each item, used everywhere an item needs to be drawn
+## (inventory slots, cauldron recipe chips, ...). The art style is flat
+## block-colour, but items themselves are always shown as pictures, never
+## as a plain colour swatch.
+##
+## RED_FRUIT/BLUE_FRUIT/PURPLE_FRUIT/PINK_BERRIES have real art, tightly
+## cropped out of their (mostly transparent) source sprite. Every other
+## item has no dedicated art yet, so it borrows the closest existing sprite
+## as a placeholder:
+##  - the brewed juice/jam/cordial reuse their source fruit's icon
+##  - Fruit Punch and Berry Tonic (the two mixed brews you can actually
+##    make) get their own distinct placeholders
+##  - Blackberries/Honeycomb/Orange Honey/Sugar Cane have no forage source
+##    or recipe yet, so which placeholder they get doesn't matter in play
+var ITEM_ICON := {}
+
+func _ready() -> void:
+	ITEM_ICON = {
+		Item.RED_FRUIT: _cropped("res://assets/FruitRed.png", Rect2(21, 29, 83, 62)),
+		Item.BLUE_FRUIT: _cropped("res://assets/FruitBlue.png", Rect2(21, 29, 83, 63)),
+		Item.PURPLE_FRUIT: _cropped("res://assets/FruitPurple.png", Rect2(20, 30, 83, 62)),
+		Item.PINK_BERRIES: _cropped("res://assets/Berries.png", Rect2(24, 27, 90, 87)),
+
+		Item.RED_JUICE: _cropped("res://assets/FruitRed.png", Rect2(21, 29, 83, 62)),
+		Item.BERRY_JAM: _cropped("res://assets/Berries.png", Rect2(24, 27, 90, 87)),
+		Item.GRAPE_CORDIAL: _cropped("res://assets/FruitPurple.png", Rect2(20, 30, 83, 62)),
+		Item.FRUIT_PUNCH: preload("res://assets/Cauldron.png"),
+		Item.BERRY_TONIC: preload("res://assets/BerryBush.png"),
+
+		Item.BLACK_BERRIES: preload("res://assets/Bush.png"),
+		Item.YELLOW_HONEY: preload("res://assets/TreeBerry.png"),
+		Item.ORANGE_HONEY: preload("res://assets/TreeBerry2.png"),
+		Item.SUGAR_CANE: preload("res://assets/TreeBerry3.png"),
+	}
+
+## Crops a tight, mostly-empty source sprite down to just the drawn pixels
+## so it reads clearly at inventory-icon size, via a shared AtlasTexture
+## (no new image files needed).
+func _cropped(path: String, region: Rect2) -> Texture2D:
+	var atlas := AtlasTexture.new()
+	atlas.atlas = load(path)
+	atlas.region = region
+	return atlas
 
 ## Cauldron recipes. Each: input Item -> count, producing one output Item.
 ## Only ingredients that can actually be foraged in the overworld are used.

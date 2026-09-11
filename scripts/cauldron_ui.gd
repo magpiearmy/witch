@@ -8,6 +8,7 @@ const BREW_TIME := 1.2
 @onready var _list: VBoxContainer = $Center/Panel/Margin/VBox/RecipeList
 @onready var _cauldron: TextureRect = $Center/Panel/Margin/VBox/Cauldron
 @onready var _pop: AudioStreamPlayer = $Pop
+@onready var _chip_style := _make_chip_style()
 
 var _brewing := false
 var _bubble_tween: Tween
@@ -63,22 +64,47 @@ func _make_row(recipe: Dictionary) -> Control:
 	row.add_child(brew)
 	return row
 
-func _chip(item_type: Constants.Item, label: String) -> Control:
-	var chip := ColorRect.new()
-	chip.color = Constants.ITEM_COLOR[item_type]
+## A small icon "chip": a neutral frame (never coloured per item) with the
+## item's picture inside, and an optional count badge in the corner.
+func _chip(item_type: Constants.Item, count_text: String) -> Control:
+	var chip := Panel.new()
 	chip.custom_minimum_size = Vector2(46, 46)
 	chip.tooltip_text = Constants.ITEM_NAME[item_type]
-	if label != "":
+	chip.add_theme_stylebox_override("panel", _chip_style)
+
+	var icon := TextureRect.new()
+	icon.texture = Constants.ITEM_ICON[item_type]
+	icon.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	icon.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT, Control.PRESET_MODE_MINSIZE, 4)
+	chip.add_child(icon)
+
+	if count_text != "":
 		var l := Label.new()
-		l.text = label
+		l.text = count_text
 		l.set_anchors_preset(Control.PRESET_FULL_RECT)
-		l.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-		l.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+		l.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
+		l.vertical_alignment = VERTICAL_ALIGNMENT_BOTTOM
+		l.add_theme_font_size_override("font_size", 15)
 		l.add_theme_color_override("font_color", Color.WHITE)
-		l.add_theme_color_override("font_outline_color", Color(0, 0, 0, 0.7))
-		l.add_theme_constant_override("outline_size", 4)
+		l.add_theme_color_override("font_outline_color", Color(0, 0, 0, 0.85))
+		l.add_theme_constant_override("outline_size", 5)
 		chip.add_child(l)
 	return chip
+
+func _make_chip_style() -> StyleBoxFlat:
+	var sb := StyleBoxFlat.new()
+	sb.bg_color = Color(1, 1, 1, 0.4)
+	sb.border_width_left = 2
+	sb.border_width_top = 2
+	sb.border_width_right = 2
+	sb.border_width_bottom = 2
+	sb.border_color = Color(0.42, 0.3, 0.18, 0.45)
+	sb.corner_radius_top_left = 8
+	sb.corner_radius_top_right = 8
+	sb.corner_radius_bottom_right = 8
+	sb.corner_radius_bottom_left = 8
+	return sb
 
 func _text(s: String) -> Label:
 	var l := Label.new()
