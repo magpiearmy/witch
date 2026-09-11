@@ -7,7 +7,6 @@
 *~
 *.kra~
 
-# Per-developer editor tooling (platform-specific binaries, not project code).
-# addons/gut is deliberately committed - it's the test framework.
+# Per-developer editor tooling, not project code.
 /addons/godot-git-plugin/
-/addons/gut
+/addons/gut/
