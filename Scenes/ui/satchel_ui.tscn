@@ -1,6 +1,6 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene format=3 uid="uid://byp6xi3o53htd"]
 
-[ext_resource type="Script" path="res://scripts/inventory_panel.gd" id="1_pnl"]
+[ext_resource type="Script" uid="uid://dtadegjeg453i" path="res://scenes/ui/satchel_ui.gd" id="1_7ck5g"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pnl"]
 bg_color = Color(0.965, 0.925, 0.84, 1)
@@ -16,59 +16,53 @@ corner_radius_bottom_left = 18
 shadow_color = Color(0, 0, 0, 0.25)
 shadow_size = 10
 
-[node name="InventoryPanel" type="Control"]
-layout_mode = 3
+[node name="SatchelUI" type="MarginContainer" unique_id=2022019768]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-script = ExtResource("1_pnl")
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+script = ExtResource("1_7ck5g")
 
-[node name="Panel" type="PanelContainer" parent="."]
-layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -486.0
-offset_top = -384.0
-offset_right = -32.0
-offset_bottom = 384.0
-grow_horizontal = 0
-grow_vertical = 2
+[node name="Panel" type="PanelContainer" parent="." unique_id=696523827]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_pnl")
 
-[node name="Margin" type="MarginContainer" parent="Panel"]
+[node name="Margin" type="MarginContainer" parent="Panel" unique_id=305933565]
 layout_mode = 2
 theme_override_constants/margin_left = 24
 theme_override_constants/margin_top = 24
 theme_override_constants/margin_right = 24
 theme_override_constants/margin_bottom = 24
 
-[node name="VBox" type="VBoxContainer" parent="Panel/Margin"]
+[node name="VBox" type="VBoxContainer" parent="Panel/Margin" unique_id=1914411812]
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="Title" type="Label" parent="Panel/Margin/VBox"]
+[node name="Title" type="Label" parent="Panel/Margin/VBox" unique_id=656831723]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.29, 0.21, 0.13, 1)
 theme_override_font_sizes/font_size = 30
 text = "Satchel"
 horizontal_alignment = 1
 
-[node name="Grid" type="GridContainer" parent="Panel/Margin/VBox"]
+[node name="Grid" type="GridContainer" parent="Panel/Margin/VBox" unique_id=384759418]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/h_separation = 12
 theme_override_constants/v_separation = 12
 columns = 3
 
-[node name="Hint" type="Label" parent="Panel/Margin/VBox"]
+[node name="Hint" type="Label" parent="Panel/Margin/VBox" unique_id=454018487]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.5, 0.42, 0.32, 1)
 theme_override_font_sizes/font_size = 16
-text = "E to close"
+text = "'E' to close"
 horizontal_alignment = 1

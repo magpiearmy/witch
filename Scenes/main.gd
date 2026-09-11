@@ -12,15 +12,15 @@ func _ready() -> void:
 	_swap_overworld_scene(forest_scene)  # first load: no fade
 
 func _connect_signals():
-	witch.connect("interact_with_body", _on_witch_interaction)
+	witch.interact_with_body.connect(_on_witch_interaction)
 	SignalBus.cottage_entered.connect(func(): _go_to(cottage_scene))
 	SignalBus.cottage_exited.connect(func(): _go_to(forest_scene))
-	SignalBus.collect_successful.connect(_on_collect)
+	SignalBus.collect_successful.connect(_on_collect_success)
 	SignalBus.collect_failed.connect(_on_collect_fail)
 	SignalBus.cauldron_opened.connect(_on_cauldron_interact)
 	SignalBus.cauldron_closed.connect(_on_cauldron_closed)
 
-func _on_collect(_item):
+func _on_collect_success(_item):
 	$Sounds/AudioCollect.pitch_scale = 2
 	$Sounds/AudioCollect.play()
 

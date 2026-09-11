@@ -15,7 +15,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="Witch"
-run/main_scene="res://scenes/main.tscn"
+run/main_scene="uid://mhjspk7yapqv"
 config/features=PackedStringArray("4.7", "Mobile")
 
 [audio]
@@ -24,15 +24,21 @@ buses/default_bus_layout="uid://d3nau8vrjs6p5"
 
 [autoload]
 
-SignalBus="*res://scripts/signal_bus.gd"
-Constants="*res://scripts/constants.gd"
-SceneTransition="*res://scripts/scene_transition.gd"
-Inventory="*res://scripts/inventory.gd"
+SignalBus="*res://scenes/globals/signal_bus.gd"
+Constants="*res://scenes/globals/constants.gd"
+SceneTransition="*res://scenes/globals/scene_transition.gd"
+Inventory="*res://scenes/globals/inventory.gd"
 
 [display]
 
-window/size/viewport_width=1600
-window/size/viewport_height=900
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/stretch/scale=1.25
+
+[editor]
+
+version_control/plugin_name="GitPlugin"
+version_control/autoload_on_startup=true
 
 [input]
 

@@ -1,6 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://b5rv55i04dx8"]
+[gd_scene format=3 uid="uid://b5rv55i04dx8"]
 
-[ext_resource type="Script" uid="uid://ckbqpa3uo0bn7" path="res://scripts/cottage_exterior.gd" id="1_qnsfw"]
+[ext_resource type="Script" uid="uid://ckbqpa3uo0bn7" path="res://scenes/entities/cottage_exterior.gd" id="1_qnsfw"]
 [ext_resource type="Texture2D" uid="uid://jc3qooy0fjqt" path="res://assets/Cottage.png" id="2_xc7g4"]
 
 [node name="CottageExterior" type="StaticBody2D"]

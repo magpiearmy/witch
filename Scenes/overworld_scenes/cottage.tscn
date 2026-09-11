@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cvouocofu0ngp"]
 
-[ext_resource type="Script" uid="uid://tqvtpshyj1hi" path="res://scripts/cottage.gd" id="1_6wfyu"]
-[ext_resource type="PackedScene" uid="uid://b4gvgeuvy86r5" path="res://scenes/cauldron.tscn" id="2_new7p"]
+[ext_resource type="Script" uid="uid://tqvtpshyj1hi" path="res://scenes/entities/cottage.gd" id="1_6wfyu"]
+[ext_resource type="PackedScene" uid="uid://b4gvgeuvy86r5" path="res://scenes/entities/cauldron.tscn" id="2_new7p"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ovt14"]
 size = Vector2(1000, 300)

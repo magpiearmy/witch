@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://euwcfq8wgxje"]
 
-[ext_resource type="Script" uid="uid://csqqn443q0128" path="res://scripts/cauldron_ui.gd" id="1_cui"]
+[ext_resource type="Script" uid="uid://csqqn443q0128" path="res://scenes/ui/cauldron_ui.gd" id="1_cui"]
 [ext_resource type="Texture2D" uid="uid://dmlav0qlmotkj" path="res://assets/Cauldron.png" id="2_cui"]
 [ext_resource type="AudioStream" uid="uid://5stnyqtvfnrb" path="res://assets/pop.mp3" id="3_cui"]
 
@@ -71,7 +71,6 @@ horizontal_alignment = 1
 custom_minimum_size = Vector2(140, 140)
 layout_mode = 2
 size_flags_horizontal = 4
-pivot_offset = Vector2(70, 70)
 texture = ExtResource("2_cui")
 expand_mode = 1
 stretch_mode = 5

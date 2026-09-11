@@ -3,7 +3,7 @@ extends Node
 ## Rendered by InventoryHud (always-on quick view of the first few) and
 ## InventoryPanel (the full grid, toggled with the "inventory" action).
 
-const CAPACITY := 12
+const CAPACITY := 9
 
 ## How many of each item is held. Dictionaries keep insertion order, so this
 ## doubles as the slot order the views draw, oldest find first.

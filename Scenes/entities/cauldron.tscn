@@ -1,7 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://b4gvgeuvy86r5"]
+[gd_scene format=3 uid="uid://b4gvgeuvy86r5"]
 
 [ext_resource type="Texture2D" uid="uid://dmlav0qlmotkj" path="res://assets/Cauldron.png" id="1_4t2kd"]
-[ext_resource type="Script" uid="uid://b4kxar0gpgth2" path="res://scenes/cauldron.gd" id="1_8jqlm"]
+[ext_resource type="Script" uid="uid://b4kxar0gpgth2" path="res://scenes/entities/cauldron.gd" id="1_8jqlm"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uivp5"]
 radius = 64.0

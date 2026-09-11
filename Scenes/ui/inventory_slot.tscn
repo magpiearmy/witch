@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://dehhmds3pvmkm"]
+
+[ext_resource type="Script" uid="uid://d078m44k6qh1n" path="res://scenes/ui/inventory_slot.gd" id="1_dxvxp"]
+[ext_resource type="Texture2D" uid="uid://0lk8h0yn7pof" path="res://assets/inventory_slot.png" id="2_bxqf6"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_dxvxp"]
+font_size = 30
+outline_size = 14
+outline_color = Color(0, 0, 0, 1)
+
+[node name="InventorySlot" type="Control" unique_id=1000200638]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_dxvxp")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=23008123]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="BgContainer" type="MarginContainer" parent="MarginContainer" unique_id=1085254610]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="Background" type="ColorRect" parent="MarginContainer/BgContainer" unique_id=1956144825]
+layout_mode = 2
+color = Color(0.9647059, 0.9254902, 0.8392157, 1)
+
+[node name="Frame" type="TextureRect" parent="MarginContainer" unique_id=1798782922]
+layout_mode = 2
+texture = ExtResource("2_bxqf6")
+
+[node name="Icon" type="TextureRect" parent="MarginContainer" unique_id=910544623]
+visible = false
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="." unique_id=1999170722]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -44.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+label_settings = SubResource("LabelSettings_dxvxp")
+horizontal_alignment = 2
+vertical_alignment = 2

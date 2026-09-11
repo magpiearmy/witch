@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://d4elgqr0axcu2"]
+
+[ext_resource type="Script" uid="uid://f03is7aj3mst" path="res://scenes/ui/inventory_ui.gd" id="1_drsq2"]
+[ext_resource type="PackedScene" uid="uid://baldwbitjdnam" path="res://scenes/ui/inventory_hud.tscn" id="2_drsq2"]
+[ext_resource type="PackedScene" uid="uid://byp6xi3o53htd" path="res://scenes/ui/satchel_ui.tscn" id="3_nuief"]
+
+[node name="InventoryUI" type="Control" unique_id=182013044]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_drsq2")
+
+[node name="Dim" type="ColorRect" parent="." unique_id=1465263898]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.09, 0.07, 0.11, 0.55)
+
+[node name="HUD" parent="." unique_id=1313728851 instance=ExtResource("2_drsq2")]
+layout_mode = 1
+
+[node name="Satchel" parent="." unique_id=2022019768 instance=ExtResource("3_nuief")]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_right = 0.0
+anchor_bottom = 0.5
+offset_top = -100.5
+offset_right = 209.0
+offset_bottom = 100.5
+grow_horizontal = 1

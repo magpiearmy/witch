@@ -1,12 +1,12 @@
 [gd_scene format=4 uid="uid://cro6u4yi6d4s8"]
 
-[ext_resource type="Script" uid="uid://b3u6kvv6w3q6d" path="res://scripts/forest.gd" id="1_3f304"]
-[ext_resource type="PackedScene" uid="uid://w4bbewfnds7w" path="res://scenes/tree.tscn" id="4_m88r8"]
-[ext_resource type="PackedScene" uid="uid://bfguuf2mt4dia" path="res://scenes/grass.tscn" id="5_2cdl4"]
-[ext_resource type="PackedScene" uid="uid://dycdx23itxtdj" path="res://scenes/bush.tscn" id="6_ftuxh"]
+[ext_resource type="Script" uid="uid://b3u6kvv6w3q6d" path="res://scenes/entities/forest.gd" id="1_3f304"]
+[ext_resource type="PackedScene" uid="uid://w4bbewfnds7w" path="res://scenes/entities/tree.tscn" id="4_m88r8"]
+[ext_resource type="PackedScene" uid="uid://bfguuf2mt4dia" path="res://scenes/entities/grass.tscn" id="5_2cdl4"]
+[ext_resource type="PackedScene" uid="uid://dycdx23itxtdj" path="res://scenes/entities/bush.tscn" id="6_ftuxh"]
 [ext_resource type="Texture2D" uid="uid://bhioc6ijyjn17" path="res://assets/tiles/tile_grass.png" id="6_om6pe"]
 [ext_resource type="Texture2D" uid="uid://bifba7vfgdm30" path="res://assets/tiles/tile_grass2.png" id="7_76mah"]
-[ext_resource type="PackedScene" uid="uid://b5rv55i04dx8" path="res://scenes/cottage_exterior.tscn" id="7_n2f1n"]
+[ext_resource type="PackedScene" uid="uid://b5rv55i04dx8" path="res://scenes/entities/cottage_exterior.tscn" id="7_n2f1n"]
 [ext_resource type="Texture2D" uid="uid://cqemsylj84t5x" path="res://assets/tiles/tile_grass3.png" id="8_lg3ds"]
 [ext_resource type="Texture2D" uid="uid://831v36qukmru" path="res://assets/tiles/tile_grass4.png" id="9_gqfr4"]
 

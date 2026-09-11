@@ -2,7 +2,7 @@ extends Control
 ## A single satchel cell. Purely a view: Inventory owns the data and calls
 ## render() to update it.
 
-@onready var _icon: TextureRect = $Icon
+@onready var _icon: TextureRect = $MarginContainer/Icon
 @onready var _label: Label = $Label
 
 ## `type` is a Constants.Item; Item.NONE with amount 0 means an empty cell.
