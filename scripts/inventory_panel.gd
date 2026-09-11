@@ -23,11 +23,15 @@ func _ready() -> void:
 	_apply_visibility()
 
 func _unhandled_input(event: InputEvent) -> void:
+	# While the cauldron holds the panel open the keybind does nothing, rather
+	# than silently flipping a state you only see once you walk away.
+	if _forced:
+		return
 	if event.is_action_pressed("inventory"):
 		_pinned = not _pinned
 		_apply_visibility()
 		get_viewport().set_input_as_handled()
-	elif _pinned and not _forced and event.is_action_pressed("cancel"):
+	elif _pinned and event.is_action_pressed("cancel"):
 		_pinned = false
 		_apply_visibility()
 		get_viewport().set_input_as_handled()

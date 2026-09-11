@@ -3,6 +3,9 @@ extends Node
 enum FruitType {BLUE, PURPLE, RED}
 
 enum Item {
+	## Default for an unassigned item_type, so "never set" is distinguishable
+	## from a real item. Never appears in the satchel or a recipe.
+	NONE,
 	RED_FRUIT,
 	BLUE_FRUIT,
 	PURPLE_FRUIT,
@@ -80,11 +83,12 @@ func _cropped(path: String, region: Rect2) -> Texture2D:
 	return atlas
 
 ## Cauldron recipes. Each: input Item -> count, producing one output Item.
+## The recipe is named after its output, so ITEM_NAME[output] is the label.
 ## Only ingredients that can actually be foraged in the overworld are used.
 var RECIPES := [
-	{"name": "Red Juice", "inputs": {Item.RED_FRUIT: 3}, "output": Item.RED_JUICE},
-	{"name": "Berry Jam", "inputs": {Item.PINK_BERRIES: 3}, "output": Item.BERRY_JAM},
-	{"name": "Grape Cordial", "inputs": {Item.PURPLE_FRUIT: 3}, "output": Item.GRAPE_CORDIAL},
-	{"name": "Fruit Punch", "inputs": {Item.RED_FRUIT: 1, Item.BLUE_FRUIT: 1, Item.PURPLE_FRUIT: 1}, "output": Item.FRUIT_PUNCH},
-	{"name": "Berry Tonic", "inputs": {Item.PINK_BERRIES: 2, Item.BLUE_FRUIT: 1}, "output": Item.BERRY_TONIC},
+	{"inputs": {Item.RED_FRUIT: 3}, "output": Item.RED_JUICE},
+	{"inputs": {Item.PINK_BERRIES: 3}, "output": Item.BERRY_JAM},
+	{"inputs": {Item.PURPLE_FRUIT: 3}, "output": Item.GRAPE_CORDIAL},
+	{"inputs": {Item.RED_FRUIT: 1, Item.BLUE_FRUIT: 1, Item.PURPLE_FRUIT: 1}, "output": Item.FRUIT_PUNCH},
+	{"inputs": {Item.PINK_BERRIES: 2, Item.BLUE_FRUIT: 1}, "output": Item.BERRY_TONIC},
 ]

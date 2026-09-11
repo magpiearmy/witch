@@ -1,7 +1,11 @@
 extends Node
 
-signal item_collected(collectable: Node2D)
-signal collect_successful(collectable: Node2D)
+## Something in the world was picked up; the Inventory decides whether it fits.
+signal item_collected(collectable: Collectable, item: Node2D)
+## ...and it did fit. Carries the world node that was collected, so the thing
+## that grew it (a tree, a bush) can react.
+signal collect_successful(item: Node2D)
+## ...and it didn't - the satchel is full.
 signal collect_failed
 
 signal cauldron_opened

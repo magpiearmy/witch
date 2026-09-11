@@ -55,8 +55,10 @@ func can_craft(inputs: Dictionary) -> bool:
 			return false
 	return true
 
-## Remove the ingredients listed in `inputs`. Assumes can_craft() passed.
+## Remove the ingredients listed in `inputs`. Call can_craft() first.
 func take(inputs: Dictionary) -> void:
+	assert(can_craft(inputs), "take() called for ingredients that aren't in stock")
+	var took_something := false
 	for type in inputs:
 		var i := _index_of(type)
 		if i == -1:
@@ -64,7 +66,9 @@ func take(inputs: Dictionary) -> void:
 		stacks[i]["amount"] -= inputs[type]
 		if stacks[i]["amount"] <= 0:
 			stacks.remove_at(i)
-	changed.emit()
+		took_something = true
+	if took_something:
+		changed.emit()
 
 ## Push the current contents into an array of InventorySlot views.
 func render_into(slots: Array) -> void:
