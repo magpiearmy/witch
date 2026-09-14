@@ -1,3 +1,31 @@
 [gd_scene format=3 uid="uid://odbmb54eb5mw"]
 
-[node name="RecipeUI" type="Container" unique_id=1214262925]
+[ext_resource type="Script" uid="uid://c8ob4p8no6jkj" path="res://scenes/ui/recipe_ui.gd" id="1_rui"]
+[ext_resource type="PackedScene" uid="uid://pf8gerlbftyn" path="res://scenes/ui/recipe_ingredient.tscn" id="2_rui"]
+
+[node name="RecipeUI" type="HBoxContainer" unique_id=1214262925]
+theme_override_constants/separation = 8
+script = ExtResource("1_rui")
+
+[node name="InputsContainer" type="HBoxContainer" parent="." unique_id=1873402216]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_constants/separation = 4
+accessibility_region = true
+alignment = 2
+
+[node name="Arrow" type="Label" parent="." unique_id=640918337]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.2901961, 0.20784314, 0.1254902, 1)
+text = "→"
+vertical_alignment = 1
+
+[node name="Output" parent="." unique_id=1520736941 instance=ExtResource("2_rui")]
+layout_mode = 2
+hover_color = Color(0.62444603, 0.8375944, 0.6613914, 1)
+
+[node name="Name" type="Label" parent="." unique_id=298815560]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.2901961, 0.20784314, 0.1254902, 1)
+vertical_alignment = 1

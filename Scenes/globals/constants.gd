@@ -38,20 +38,6 @@ var ITEM_NAME := {
 	Item.BERRY_TONIC: "Berry Tonic",
 }
 
-## Icon texture for each item, used everywhere an item needs to be drawn
-## (inventory slots, cauldron recipe chips, ...). The art style is flat
-## block-colour, but items themselves are always shown as pictures, never
-## as a plain colour swatch.
-##
-## RED_FRUIT/BLUE_FRUIT/PURPLE_FRUIT/PINK_BERRIES have real art, tightly
-## cropped out of their (mostly transparent) source sprite. Every other
-## item has no dedicated art yet, so it borrows the closest existing sprite
-## as a placeholder:
-##  - the brewed juice/jam/cordial reuse their source fruit's icon
-##  - Fruit Punch and Berry Tonic (the two mixed brews you can actually
-##    make) get their own distinct placeholders
-##  - Blackberries/Honeycomb/Orange Honey/Sugar Cane have no forage source
-##    or recipe yet, so which placeholder they get doesn't matter in play
 var ITEM_ICON := {}
 
 func _ready() -> void:

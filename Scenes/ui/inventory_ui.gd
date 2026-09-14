@@ -1,31 +1,34 @@
 extends Control
 
-var _satchel_open = false
+var _is_open = false
+var _forced_open = false
 
 func _ready():
 	_connect_signals()
 
 	
 func _connect_signals():
-	SignalBus.cauldron_opened.connect(_open_satchel)
-	SignalBus.cauldron_closed.connect(_close_satchel)
+	SignalBus.cauldron_opened.connect(_open.bind(true))
+	SignalBus.cauldron_closed.connect(_close)
 	
-func _open_satchel():
-	_satchel_open = true
+func _open(force=false):
+	_is_open = true
+	_forced_open = force
 	$HUD.hide()
 	$Satchel.show()
 	$Dim.show()
 	
-func _close_satchel():
-	_satchel_open = false
+func _close():
+	_is_open = false
+	_forced_open = false
 	$HUD.show()
 	$Satchel.hide()
 	$Dim.hide()
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("inventory"):
-		if _satchel_open:
-			_close_satchel()
+	if event.is_action_pressed("inventory") and not _forced_open:
+		if _is_open:
+			_close()
 		else:
-			_open_satchel()
+			_open()
 	

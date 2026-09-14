@@ -19,22 +19,29 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="BgContainer" type="MarginContainer" parent="MarginContainer" unique_id=1085254610]
+[node name="BackgroundContainer" type="MarginContainer" parent="MarginContainer" unique_id=1085254610]
 layout_mode = 2
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="Background" type="ColorRect" parent="MarginContainer/BgContainer" unique_id=1956144825]
+[node name="Background" type="ColorRect" parent="MarginContainer/BackgroundContainer" unique_id=1956144825]
 layout_mode = 2
-color = Color(0.9647059, 0.9254902, 0.8392157, 1)
+color = Color(0.9607843, 0.8745098, 0.75686276, 1)
 
 [node name="Frame" type="TextureRect" parent="MarginContainer" unique_id=1798782922]
 layout_mode = 2
 texture = ExtResource("2_bxqf6")
 
-[node name="Icon" type="TextureRect" parent="MarginContainer" unique_id=910544623]
+[node name="IconContainer" type="MarginContainer" parent="MarginContainer" unique_id=1085651178]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="Icon" type="TextureRect" parent="MarginContainer/IconContainer" unique_id=910544623]
 visible = false
 layout_mode = 2
 expand_mode = 1

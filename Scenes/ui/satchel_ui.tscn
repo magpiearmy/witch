@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dtadegjeg453i" path="res://scenes/ui/satchel_ui.gd" id="1_7ck5g"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pnl"]
-bg_color = Color(0.965, 0.925, 0.84, 1)
+bg_color = Color(0.9607843, 0.8745098, 0.75686276, 1)
 border_width_left = 4
 border_width_top = 4
 border_width_right = 4
