@@ -8,7 +8,7 @@ func _ready():
 	_init_fruit()
 	
 func _connect_signals():
-	SignalBus.on_collect_success.connect(self._check_fruit_collected)
+	SignalBus.collect_successful.connect(self._check_fruit_collected)
 	$AnimatedSprite.animation_finished.connect(func(): $AnimatedSprite.frame=0)
 	
 func _init_fruit():

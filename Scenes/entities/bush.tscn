@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://dycdx23itxtdj"]
 
 [ext_resource type="Texture2D" uid="uid://db083iq7pscmd" path="res://assets/BerryBush.png" id="1_804ow"]
-[ext_resource type="Script" uid="uid://cbne4cvnytcl0" path="res://scripts/bush.gd" id="1_btb6u"]
-[ext_resource type="PackedScene" uid="uid://cbe1weosiv6om" path="res://scenes/berries.tscn" id="2_t84kr"]
+[ext_resource type="Script" uid="uid://cbne4cvnytcl0" path="res://scenes/entities/bush.gd" id="1_btb6u"]
+[ext_resource type="PackedScene" uid="uid://cbe1weosiv6om" path="res://scenes/entities/berries.tscn" id="2_t84kr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tymd4"]
 size = Vector2(112, 72)

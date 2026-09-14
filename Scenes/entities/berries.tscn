@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://cbe1weosiv6om"]
 
 [ext_resource type="Texture2D" uid="uid://dlpcv6dlboob4" path="res://assets/Berries.png" id="1_fxkvc"]
-[ext_resource type="Script" uid="uid://cyq065wt5vvax" path="res://scenes/berries.gd" id="2_dww6s"]
-[ext_resource type="Script" uid="uid://d0ier0hlla06b" path="res://scripts/collectable.gd" id="3_pcb6n"]
+[ext_resource type="Script" uid="uid://cyq065wt5vvax" path="res://scenes/entities/berries.gd" id="2_dww6s"]
+[ext_resource type="Script" uid="uid://d0ier0hlla06b" path="res://scenes/components/collectable.gd" id="3_pcb6n"]
 
 [node name="Berries" type="Sprite2D" unique_id=2086988448]
 texture = ExtResource("1_fxkvc")

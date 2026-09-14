@@ -1,9 +1,10 @@
 [gd_scene format=3 uid="uid://mhjspk7yapqv"]
 
-[ext_resource type="Script" uid="uid://b81dskeccb827" path="res://scripts/main.gd" id="1_ljhay"]
+[ext_resource type="Script" uid="uid://b81dskeccb827" path="res://scenes/main.gd" id="1_ljhay"]
 [ext_resource type="AudioStream" uid="uid://5stnyqtvfnrb" path="res://assets/pop.mp3" id="2_qotdb"]
-[ext_resource type="PackedScene" uid="uid://baldwbitjdnam" path="res://scenes/inventory_ui.tscn" id="3_ve26q"]
-[ext_resource type="PackedScene" uid="uid://cgqvubalfhrgq" path="res://scenes/witch.tscn" id="4_cqdox"]
+[ext_resource type="PackedScene" uid="uid://cgqvubalfhrgq" path="res://scenes/entities/witch.tscn" id="4_cqdox"]
+[ext_resource type="PackedScene" uid="uid://euwcfq8wgxje" path="res://scenes/ui/cauldron_ui.tscn" id="5_cauld"]
+[ext_resource type="PackedScene" uid="uid://d4elgqr0axcu2" path="res://scenes/ui/inventory_ui.tscn" id="6_o6xl0"]
 
 [node name="Main" type="Node2D" unique_id=61970924]
 script = ExtResource("1_ljhay")
@@ -17,9 +18,10 @@ volume_db = -5.0
 [node name="UI" type="CanvasLayer" parent="." unique_id=204284014]
 layer = 2
 
-[node name="Inventory" parent="UI" unique_id=532250949 instance=ExtResource("3_ve26q")]
-metadata/_edit_use_anchors_ = true
-metadata/_edit_lock_ = true
+[node name="InventoryUI" parent="UI" unique_id=182013044 instance=ExtResource("6_o6xl0")]
+
+[node name="CauldronUI" parent="UI" unique_id=1170869097 instance=ExtResource("5_cauld")]
+visible = false
 
 [node name="Overworld" type="Node" parent="." unique_id=193717941]
 

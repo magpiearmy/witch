@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://baldwbitjdnam"]
+
+[ext_resource type="Script" uid="uid://bcqns3xo4smkb" path="res://scenes/ui/inventory_hud.gd" id="1_hud"]
+[ext_resource type="PackedScene" uid="uid://dehhmds3pvmkm" path="res://scenes/ui/inventory_slot.tscn" id="2_slot"]
+
+[node name="InventoryHud" type="Control" unique_id=182013044]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_hud")
+
+[node name="Margin" type="MarginContainer" parent="." unique_id=1364312821]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -206.0
+offset_right = 476.0
+grow_vertical = 0
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Margin" unique_id=1307461381]
+layout_mode = 2
+
+[node name="Row" type="HBoxContainer" parent="Margin/VBoxContainer" unique_id=1815027311]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="Slot1" parent="Margin/VBoxContainer/Row" unique_id=1885416438 instance=ExtResource("2_slot")]
+layout_mode = 2
+
+[node name="Slot2" parent="Margin/VBoxContainer/Row" unique_id=418373174 instance=ExtResource("2_slot")]
+layout_mode = 2
+
+[node name="Slot3" parent="Margin/VBoxContainer/Row" unique_id=1800887953 instance=ExtResource("2_slot")]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Margin/VBoxContainer" unique_id=1361612755]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(0.6803213, 0.6803213, 0.6803212, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 20
+text = " 'E' to open satchel"
+horizontal_alignment = 1

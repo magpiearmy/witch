@@ -6,3 +6,7 @@
 *.tmp
 *~
 *.kra~
+
+# Per-developer editor tooling, not project code.
+/addons/godot-git-plugin/
+/addons/gut/
